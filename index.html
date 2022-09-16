@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>timestamp converter</title>
+</head>
+
+<body>
+  <h1>Timestamp Converter</h1>
+  <form name="form_main">
+    <fieldset>
+      <legend>Date To Timestamp</legend>
+      <label for="startDate">Data:</label>
+      <input name="startDate" id="startDate" size="20" type="date" /><br />
+
+      <label for="startTime">Hora:</label>
+      <input name="startTime" id="startTime" size="20" type="time" /><br />
+      <label for="timestamp">TimeStamp:</label>
+      <span id="timestamp"></span><br />
+
+      <button type="button" onclick="dateToTimestamp()">Gerar</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>TimeStamp To Date</legend>
+      <label for="timestamp_end">TimeStamp:</label>
+      <input name="timestamp_end" id="timestamp_end" type="text" /><br />
+      <label for="date">Data:</label>
+      <span id="date"></span><br />
+
+      <button type="button" onclick="timestampToDate()">Gerar</button>
+    </fieldset>
+  </form>
+
+  <script src="./script.js"></script>
+</body>
+</html>
