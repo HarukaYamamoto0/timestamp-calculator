@@ -1,58 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timestamp Generator and Converter</title>
-    <meta name="description" content="">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <meta
+      name="description"
+      content="Take the current timestamp, convert it to a date, or even convert a date to a timestamp"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
     <header>
-        <h1>Timestamp Generator and Converter</h1>
+      <h1>Converter and timestamp generator</h1>
     </header>
     <main>
-        
-        <section id="current-timestamp">
-            <h2>Current Timestamp</h2>
-            <button class="results-button current-timestamp-button">
-                <span class="results">1695938792</span>
-                <span class="icons">
-                    <img src="./assets/clipboard.svg">
-                </span>
-            </button>
-            <button class="action-button get-timestamp-button">Get Timestamp!</button>
-        </section>
-        
-        <div class="divider"></div>
-        
-        <section id="convert-to-date">
-            <h2>Convert Timestamp To Date</h2>
-            <input class="timestamp-input" type="number" placeholder="Put your timestamp here!">
-            <button class="action-button convert-to-date-button">Convert!</button>
-            <button class="results-button convert-to-date-result-button">
-                <span class="results">01/12/2023 19:59:38</span>
-                <span class="icons">
-                    <img src="./assets/clipboard.svg">
-                </span>
-            </button>
-        </section>
-        
-        <div class="divider"></div>
-        
-        <section id="convert-to-timestamp">
-            <h2>Convert Date to Timestamp</h2>
-            <input class="date-input" type="text" placeholder="28/09/2023 20:35:10">
-            <button class="action-button convert-to-timestamp-button">Convert!</button>
-            <button class="results-button convert-to-timestamp-result-button">
-                <span class="results">1695938792</span>
-                <span class="icons">
-                    <img src="./assets/clipboard.svg">
-                </span>
-            </button>
-        </section>
-        
+      <section id="section-get-current-timestamp">
+        <h2>Current Timestamp</h2>
+        <button class="result-button">
+          <span id="result-button-get-current-timestamp" class="result-text"
+            >1695938792</span
+          >
+          <span class="icons">
+            <img src="./assets/clipboard.svg" />
+          </span>
+        </button>
+
+        <button onclick="getCurrentTimestamp()" class="action-button">
+          Get Timestamp!
+        </button>
+      </section>
+
+      <div class="divider"></div>
+
+      <section id="section-convert-timestamp-to-date">
+        <h2>Convert Timestamp To Date</h2>
+        <input
+          id="input-convert-timestamp-to-date"
+          class="input"
+          type="number"
+          placeholder="Put your timestamp here!"
+        />
+        <button onclick="convertTimestampToDate()" class="action-button">
+          Convert!
+        </button>
+        <button class="result-button">
+          <span id="result-button-convert-timestamp-to-date" class="result-text"
+            >2023-09-28 7:06:32 p.m.</span
+          >
+          <span class="icons">
+            <img src="./assets/clipboard.svg" />
+          </span>
+        </button>
+      </section>
+
+      <div class="divider"></div>
+
+      <section id="section-convert-date-to-timestamp">
+        <h2>Convert Date to Timestamp</h2>
+        <input
+          id="input-convert-date-to-timestamp"
+          class="input"
+          type="text"
+          placeholder="YYYY-MM-DD hh:mm:ss p.m."
+        />
+        <button
+          onclick="convertDateToTimestamp()"
+          class="action-button convert-to-timestamp-button"
+        >
+          Convert!
+        </button>
+        <button class="result-button">
+          <span id="result-button-convert-date-to-timestamp" class="result-text"
+            >1695938792</span
+          >
+          <span class="icons">
+            <img src="./assets/clipboard.svg" />
+          </span>
+        </button>
+      </section>
     </main>
     <script src="scripts.js"></script>
-</body>
+  </body>
 </html>

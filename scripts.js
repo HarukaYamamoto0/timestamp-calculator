@@ -1,66 +1,63 @@
 function getCurrentTimestamp() {
-    const currentTimestamp = Math.floor(Date.now() / 1000);
-    return currentTimestamp;
+  const resultButton = document.getElementById(
+    "result-button-get-current-timestamp",
+  );
+
+  const currentTimestamp = Math.floor(Date.now() / 1000);
+
+  resultButton.textContent = currentTimestamp;
+  return currentTimestamp;
 }
 
 function convertTimestampToDate(timestamp) {
-    const date = new Date(timestamp * 1000);
-    return date.toLocaleString().replace(",", "");
+  const resultButton = document.getElementById(
+    "result-button-convert-timestamp-to-date",
+  );
+  const timestampInput = document.getElementById(
+    "input-convert-timestamp-to-date",
+  );
+
+  const date = new Date(parseInt(timestampInput.value) * 1000);
+  const localizedDate = date.toLocaleString().replace(",", "");
+
+  resultButton.textContent = localizedDate;
+  return localizedDate;
 }
 
-function convertDateToTimestamp(dateString) {
-    const [datePart, timePart] = dateString.split(' ');
-    const [day, month, year] = datePart.split('/');
-    const [hours, minutes, seconds] = timePart.split(':');
+function convertDateToTimestamp() {
+  const resultButton = document.getElementById(
+    "result-button-convert-date-to-timestamp",
+  );
+  const timestampInput = document.getElementById(
+    "input-convert-date-to-timestamp",
+  );
 
-    const formattedDate = new Date(year, month, day, hours, minutes, seconds);
-    const timestamp = Math.floor(formattedDate.getTime() / 1000);
+  const formattedDate = new Date(
+    timestampInput.value.replace("p.m.", "PM").replace("a.m.", "AM"),
+  );
+  const timestamp = formattedDate.getTime() / 1000;
 
-    return timestamp;
+  if (Number.isNaN(timestamp)) {
+    return alert("Please enter a valid date!");
+  }
+
+  resultButton.textContent = timestamp;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const currentTimestampButton = document.querySelector('#current-timestamp .get-timestamp-button');
-    const currentTimestampResult = document.querySelector('#current-timestamp .results');
+const resultButtons = document.querySelectorAll(".result-button");
 
-    const convertToDateFormatButton = document.querySelector('#convert-to-date .convert-to-date-button');
-    const convertToDateFormatResult = document.querySelector('#convert-to-date .results');
-
-    const convertToTimestampButton = document.querySelector('#convert-to-timestamp .convert-to-timestamp-button');
-    const convertToTimestampResult = document.querySelector('#convert-to-timestamp .results');
-
-    currentTimestampButton.addEventListener('click', function() {
-        const currentTimestamp = getCurrentTimestamp();
-        currentTimestampResult.textContent = currentTimestamp;
-    });
-
-    convertToDateFormatButton.addEventListener('click', function() {
-        const timestampInput = document.querySelector('#convert-to-date .timestamp-input').value;
-        const date = convertTimestampToDate(timestampInput);
-        convertToDateFormatResult.textContent = date;
-    });
-
-    convertToTimestampButton.addEventListener('click', function() {
-        const dateInput = document.querySelector('#convert-to-timestamp .date-input').value;
-        const timestamp = convertDateToTimestamp(dateInput);
-        convertToTimestampResult.textContent = timestamp;
-    });
-
-    const resultButtons = document.querySelectorAll('.results-button');
-
-    resultButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            const result = button.querySelector('.results').textContent;
-            copyTextToClipboard(result);
-        });
-    });
-
-    function copyTextToClipboard(text) {
-        const textArea = document.createElement('textarea');
-        textArea.value = text;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-    }
+resultButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const result = button.querySelector(".result-text").textContent;
+    copyTextToClipboard(result);
+  });
 });
+
+function copyTextToClipboard(text) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textArea);
+}
