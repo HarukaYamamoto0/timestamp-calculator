@@ -1,3 +1,11 @@
+const minWidth = 768; // Minimum width for desktop devices
+const isDesktop = window.innerWidth > minWidth || screen.width > minWidth;
+
+if (isDesktop)
+  alert(
+    "Note: This site is optimized for mobile phones only. Sorry if you have it on the computer.",
+  );
+
 function getCurrentTimestamp() {
   const resultButton = document.getElementById(
     "result-button-get-current-timestamp",
